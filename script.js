@@ -1,13 +1,4 @@
-// Criar grid (6x8 = 48 quadrados)
-const grid = document.getElementById("grid");
-for (let i = 0; i < 48; i++) {
-  const cell = document.createElement("div");
-  cell.classList.add("cell");
-  cell.addEventListener("click", () => placeFurniture(cell));
-  grid.appendChild(cell);
-}
-
-// Biblioteca de móveis com imagens
+// Catálogo de móveis com imagens
 const furnitureItems = {
   "Sofá": "https://img.icons8.com/color/96/sofa.png",
   "Cama": "https://img.icons8.com/color/96/bed.png",
@@ -18,37 +9,67 @@ const furnitureItems = {
 };
 
 const furnitureList = document.getElementById("furniture-list");
-let selectedFurniture = null;
+const roomArea = document.getElementById("room-area");
 
-// Mostrar biblioteca de móveis
+// Fundos dos cômodos
+const roomBackgrounds = {
+  sala: "https://i.imgur.com/q9Z1ZbE.jpg",
+  quarto: "https://i.imgur.com/auVnQDn.jpg",
+  cozinha: "https://i.imgur.com/d5s1VXX.jpg"
+};
+
+// Carregar catálogo
 Object.keys(furnitureItems).forEach(item => {
   const div = document.createElement("div");
   div.classList.add("furniture");
-  div.textContent = item;
-  div.addEventListener("click", () => selectFurniture(item));
+
+  const img = document.createElement("img");
+  img.src = furnitureItems[item];
+  img.alt = item;
+
+  const label = document.createElement("p");
+  label.textContent = item;
+
+  div.appendChild(img);
+  div.appendChild(label);
+
+  // Ao clicar, coloca no cômodo
+  div.addEventListener("click", () => {
+    const roomImg = document.createElement("img");
+    roomImg.src = furnitureItems[item];
+    roomImg.alt = item;
+    roomImg.draggable = true;
+
+    // Efeito de LED diferente
+    if (item === "Luz LED") {
+      roomImg.style.filter = "drop-shadow(0 0 15px yellow)";
+    }
+
+    // Permitir arrastar dentro do cômodo
+    roomImg.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", "");
+      e.target.classList.add("dragging");
+    });
+
+    roomImg.addEventListener("dragend", (e) => {
+      e.target.classList.remove("dragging");
+    });
+
+    roomArea.appendChild(roomImg);
+  });
+
   furnitureList.appendChild(div);
 });
 
-function selectFurniture(item) {
-  selectedFurniture = item;
-  document.getElementById("selected-item").textContent = "Selecionado: " + item;
+// Mudar fundo do cômodo
+function changeRoom() {
+  const select = document.getElementById("room-select");
+  const choice = select.value;
+  roomArea.style.backgroundImage = `url(${roomBackgrounds[choice]})`;
 }
 
-function placeFurniture(cell) {
-  if (selectedFurniture) {
-    cell.innerHTML = ""; // limpa a célula
-    const img = document.createElement("img");
-    img.src = furnitureItems[selectedFurniture];
-    cell.appendChild(img);
-
-    // efeito especial para LEDs
-    if (selectedFurniture === "Luz LED") {
-      cell.style.background = "radial-gradient(circle, #fef08a, #facc15)";
-    } else {
-      cell.style.background = "white";
-    }
-  }
-}
+// Set padrão
+changeRoom();
 
 // Ideias simuladas
 function generateIdeas() {
@@ -57,11 +78,11 @@ function generateIdeas() {
   let resposta = "";
 
   if (input.includes("sala")) {
-    resposta = "💡 Coloque o sofá de frente para a TV e LEDs atrás para dar aconchego.";
+    resposta = "💡 Coloque o sofá de frente para a TV e LEDs atrás para aconchego.";
   } else if (input.includes("quarto")) {
-    resposta = "💡 Centralize a cama, use LED suave nas laterais e coloque mesa de cabeceira.";
+    resposta = "💡 Centralize a cama, adicione LED suave e mesa de cabeceira.";
   } else if (input.includes("cozinha")) {
-    resposta = "💡 Geladeira no canto, mesa próxima à janela e bastante iluminação.";
+    resposta = "💡 Geladeira no canto, mesa próxima à janela e bastante luz.";
   } else {
     resposta = "💡 Use móveis claros e iluminação com LED para ampliar o espaço.";
   }

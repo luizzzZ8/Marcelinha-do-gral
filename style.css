@@ -1,7 +1,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #fdfdfd;
+  background: #fafafa;
   color: #333;
 }
 
@@ -18,64 +18,63 @@ main {
   padding: 1rem;
 }
 
-#canvas-section, #controls {
+#catalogo, #room {
+  flex: 1;
   background: white;
   padding: 1rem;
   border-radius: 12px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-#canvas-section {
-  flex: 2;
-}
-
-#controls {
-  flex: 1;
-}
-
-#grid {
-  display: grid;
-  grid-template-columns: repeat(8, 60px);
-  grid-template-rows: repeat(6, 60px);
-  gap: 2px;
-  background: #eee;
-  padding: 4px;
-}
-
-.cell {
-  width: 60px;
-  height: 60px;
-  background: white;
-  border: 1px dashed #ccc;
+#furniture-list {
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.cell img {
-  max-width: 55px;
-  max-height: 55px;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .furniture {
-  background: #f973a4;
-  color: white;
-  border-radius: 6px;
-  padding: 4px;
-  font-size: 14px;
-  cursor: pointer;
-  margin: 4px 0;
+  width: 100px;
   text-align: center;
+  cursor: pointer;
 }
 
-button {
-  margin-top: 4px;
-  background: #7c3aed;
-  color: white;
-  border: none;
+.furniture img {
+  width: 100%;
   border-radius: 8px;
-  padding: 6px 10px;
-  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.furniture img:hover {
+  transform: scale(1.1);
+}
+
+#room-area {
+  min-height: 400px;
+  border: 2px dashed #ccc;
+  border-radius: 12px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+  align-content: flex-start;
+  position: relative;
+}
+
+#room-area img {
+  width: 80px;
+  height: auto;
+  position: relative;
+  cursor: grab;
+}
+
+#assistant {
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 textarea {
@@ -84,10 +83,19 @@ textarea {
   margin-top: 4px;
 }
 
-#ai-output {
-  background: #f3f4f6;
-  padding: 6px;
-  border-radius: 6px;
-  font-size: 14px;
+button {
   margin-top: 6px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+#ai-output {
+  margin-top: 8px;
+  background: #f3f4f6;
+  padding: 8px;
+  border-radius: 8px;
 }
