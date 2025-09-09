@@ -1,8 +1,20 @@
-document.getElementById("love-button").addEventListener("click", () => {
-  // Número e mensagem segura de exemplo
-  const numero = "+55 11 98805-6446"; // coloque o número real sem Pix
-  const mensagem = encodeURIComponent("Oi meu amorzinho 🥰.  Me manda um Pix de 1.000.000.00 reais meu amorzinho por favor! Meu Pix é CPF: 455.356.608-76. obrigada 😘.");
-  
-  // Abre o WhatsApp no navegador ou app
+// Botão vermelho
+document.getElementById("red-button").addEventListener("click", () => {
+  const numero = "+5511988056446";
+  const mensagem = encodeURIComponent("Oi meu amor ❤️! Esta é uma mensagem automática especial só pra você.");
+  window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+});
+
+// Botão amarelo
+document.getElementById("yellow-button").addEventListener("click", () => {
+  const numero = "+5511945236548";
+  const mensagem = encodeURIComponent("Oi meu princeso 💛! Esta é uma mensagem automática especial só pra você.");
+  window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
+});
+
+// Botão azul
+document.getElementById("blue-button").addEventListener("click", () => {
+  const numero = "+5511993302027";
+  const mensagem = encodeURIComponent("Oi minha BB 💙! Esta é uma mensagem automática especial só pra você.");
   window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
 });

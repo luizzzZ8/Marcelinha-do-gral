@@ -10,21 +10,49 @@ body {
 
 .container {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-#love-button {
-  background: #1e3fff;
-  color: white;
-  font-size: 28px;
+button {
+  font-size: 32px;
   padding: 30px 60px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  box-shadow: 0 0 20px #1e3fff, 0 0 40px #1e3fff, 0 0 60px #1e3fff;
   transition: all 0.3s ease;
 }
 
-#love-button:hover {
+/* Botão vermelho */
+.btn-red {
+  background: #ff1e1e;
+  color: white;
+  box-shadow: 0 0 20px #ff1e1e, 0 0 40px #ff1e1e, 0 0 60px #ff1e1e;
+}
+.btn-red:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ff1e1e, 0 0 50px #ff1e1e, 0 0 70px #ff1e1e;
+}
+
+/* Botão amarelo */
+.btn-yellow {
+  background: #ffd700;
+  color: #000;
+  box-shadow: 0 0 20px #ffd700, 0 0 40px #ffd700, 0 0 60px #ffd700;
+}
+.btn-yellow:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ffd700, 0 0 50px #ffd700, 0 0 70px #ffd700;
+}
+
+/* Botão azul */
+.btn-blue {
+  background: #1e3fff;
+  color: white;
+  box-shadow: 0 0 20px #1e3fff, 0 0 40px #1e3fff, 0 0 60px #1e3fff;
+}
+.btn-blue:hover {
   transform: scale(1.1);
   box-shadow: 0 0 30px #1e3fff, 0 0 50px #1e3fff, 0 0 70px #1e3fff;
 }
