@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcelinha do Gral</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Marcelinha do Gral</h1>
+    <p>Monte sua casa e receba ideias inteligentes ✨</p>
+  </header>
+
+  <main>
+    <section id="canvas-section">
+      <h2>Sala de Montagem</h2>
+      <div id="grid"></div>
+    </section>
+
+    <section id="controls">
+      <h2>Biblioteca de Móveis</h2>
+      <div id="furniture-list"></div>
+
+      <h2>Item Selecionado</h2>
+      <div id="selected-item">Nenhum item selecionado.</div>
+
+      <h2>Assistente Inteligente</h2>
+      <textarea id="ai-input" placeholder="Ex: ideias para sala..."></textarea>
+      <button onclick="generateIdeas()">Gerar ideias</button>
+      <pre id="ai-output"></pre>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
