@@ -7,7 +7,7 @@ document.getElementById("red-button").addEventListener("click", () => {
 
 // Botão amarelo
 document.getElementById("yellow-button").addEventListener("click", () => {
-  const numero = "+5511945236548";
+  const numero = "";
   const mensagem = encodeURIComponent("oii meu princeso você pode e deve me fazer um pix de R$2000 🥰 e por favor faça rapido nesse pix aqui numero:11 96666-5585. e faz logo por favor, bjss 😘.");
   window.open(`https://wa.me/${numero}?text=${mensagem}`, "_blank");
 });
